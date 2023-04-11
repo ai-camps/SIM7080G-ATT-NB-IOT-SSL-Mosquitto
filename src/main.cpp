@@ -1,11 +1,17 @@
 /**
- * Important Note : this demo code is written based on the examples from https://github.com/Xinyuan-LilyGO/LilyGo-T-SIM7080G/tree/master/examples
- * @brief     Support LilyGo T-SIM7080G to access test.mosquitto.org by TLS/SSL through on AT&T NB-IOT radio network
- * @author    Jun Wen
+ * Important claim -
+ *      I am not the original author of this code.
+ *      This repository includes codes that was created using examples from https://github.com/Xinyuan-LilyGO/LilyGo-T-SIM7080G/tree/master/examples
+ *      I have adapted and modified this code to suit my specific needs, but I want to acknowledge and give credit to the original authors Lewis He (lewishe@outlook.com) for his work.
+ *      Thank Lewis He (lewishe@outlook.com) for providing these helpful examples.
+ *      Please note that my use of this code falls under MIT license or terms of use of the original source,
+ *      I am not responsible for any damages or issues that may arise from the use of this code.
+ * @brief     Support T-SIM7080G to access test.mosquitto.org on TLS/SSL through AT&T NB-IOT radio
  * @license   MIT
  * @date      2023-04-10
  * @version   1.0.0
  */
+
 
 #include <Arduino.h>
 #define XPOWERS_CHIP_AXP2102
