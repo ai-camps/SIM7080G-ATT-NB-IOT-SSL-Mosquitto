@@ -12,7 +12,6 @@
  * @version   1.0.0
  */
 
-
 #include <Arduino.h>
 #define XPOWERS_CHIP_AXP2102
 #include "XPowersLib.h"
@@ -261,6 +260,14 @@ void setup()
     Serial.println("............................................................................Step 5");
     Serial.println("Start to perform network registration, configure APN and ping 8.8.8.8");
 
+    // Important !
+    // To use AT&T NB-IOT network, you must correctly configure as below ATT NB-IoT OneRate APN "m2mNB16.com.attz",
+    // Otherwise ATT will assign a general APN like "m2mglobal" which seems blocks 443,8883,8884 ports.
+    Serial.println("Configuring APN...");
+    //modem.sendAT("+CGDCONT=1,\"IP\",\"m2mNB16.com.attz\"");
+    modem.sendAT("+CGDCONT=1,\"IP\",\"iot.1nce.net\"");
+    modem.waitResponse();
+
     RegStatus s;
     do
     {
@@ -278,12 +285,6 @@ void setup()
     Serial.println();
     Serial.print("Network register info:");
     Serial.println(register_info[s]);
-
-    // Important ! To use AT&T NB-IOT network, you must correctly configure as below ATT NB-IoT OneRate APN "m2mNB16.com.attz",
-    // Otherwise ATT will assign a general APN like "m2mglobal" which seems blocks 443,8883,8884 ports.
-    Serial.println("Configuring APN...");
-    modem.sendAT("+CGDCONT=1,\"IP\",\"m2mNB16.com.attz\"");
-    modem.waitResponse();
 
     modem.sendAT("+CGNAPN");
     if (modem.waitResponse(10000L) != 1)
